@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATEM WebTally", "ATEM WebTally\ATEM WebTally.csproj", "{D5A74EBF-4A51-4182-B181-6D436A4C95A4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{EDFC792B-775C-411B-B5B5-DB9FA14DB185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{D5A74EBF-4A51-4182-B181-6D436A4C95A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A74EBF-4A51-4182-B181-6D436A4C95A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5A74EBF-4A51-4182-B181-6D436A4C95A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDFC792B-775C-411B-B5B5-DB9FA14DB185}.Debug|Any CPU.ActiveCfg = Debug
+		{EDFC792B-775C-411B-B5B5-DB9FA14DB185}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
