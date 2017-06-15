@@ -162,7 +162,7 @@ namespace ATEM_WebTally
 
                 inputPorts.Clear();
 
-                inputInfo = new List<Dictionary<string, string>>();
+                List<Dictionary<string, string>> inputInfoTemp = new List<Dictionary<string, string>>();
 
                 while (input != null)
                 {
@@ -197,8 +197,8 @@ namespace ATEM_WebTally
                     inputItem.Add("isProgram", isProgram.ToString());
                     inputItem.Add("shortName", shortName);
                     inputItem.Add("longName", longName);
-
-                    inputInfo.Add(inputItem);
+                    
+                    inputInfoTemp.Add(inputItem);
 
                     if (updateInputList)
                     {
@@ -209,6 +209,12 @@ namespace ATEM_WebTally
                     tallyPort++;
 
                     inputIterator.Next(out input);
+                }
+
+                lock (locker)
+                {
+                    inputInfo = new List<Dictionary<string, string>>();
+                    inputInfo = inputInfoTemp;
                 }
 
                 if (updateInputList)
@@ -284,7 +290,7 @@ namespace ATEM_WebTally
         public static List<int> inputPorts = new List<int>();
 
         private ReaderWriterLock rwl = new ReaderWriterLock();
-        private object locker = new object();
+        public static object locker = new object();
 
         public static QRForm qrf;
 
@@ -462,7 +468,16 @@ namespace ATEM_WebTally
         {
             qrf.ShowDialog();
         }
-        
+
+        private void btnRefreshIpList_Click(object sender, EventArgs e)
+        {
+            ips = updateIpList();
+            ipList.Items.Clear();
+            foreach (var ip in ips)
+            {
+                ipList.Items.Add(ip.Item2 + " (" + ip.Item1 + ")");
+            }
+        }
     }
 
     public class socketListener
@@ -483,7 +498,7 @@ namespace ATEM_WebTally
         private WebTallyForm _mainForm;
 
         private ReaderWriterLock rwl = new ReaderWriterLock();
-        private object locker = new object();
+        private object fileLocker = new object();
 
         public socketListener(WebTallyForm mainForm, int p, string t)
         {
@@ -570,7 +585,7 @@ namespace ATEM_WebTally
                         var page = Application.StartupPath + "/webserver/main" + resPath;
 
                         bool fileExist;
-                        lock (locker)
+                        lock (fileLocker)
                             fileExist = File.Exists(page);
                         if (!fileExist)
                         {
@@ -645,10 +660,13 @@ namespace ATEM_WebTally
 
                         try
                         {
-                            WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("isPreview", out isPreview);
-                            WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("isProgram", out isProgram);
-                            WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("shortName", out shortName);
-                            WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("longName", out longName);
+                            lock (WebTallyForm.locker)
+                            {
+                                WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("isPreview", out isPreview);
+                                WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("isProgram", out isProgram);
+                                WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("shortName", out shortName);
+                                WebTallyForm.AtemInfo.inputInfo.ElementAt(camNum).TryGetValue("longName", out longName);
+                            }
                         }
 
 
@@ -739,7 +757,7 @@ namespace ATEM_WebTally
                         var page = Application.StartupPath + "/webserver/client" + resPath;
 
                         bool fileExist;
-                        lock (locker)
+                        lock (fileLocker)
                             fileExist = File.Exists(page);
                         if (!fileExist)
                         {

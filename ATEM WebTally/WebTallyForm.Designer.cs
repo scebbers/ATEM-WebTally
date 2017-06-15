@@ -34,6 +34,7 @@ namespace ATEM_WebTally
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.consoleBox = new System.Windows.Forms.TextBox();
             this.Instellingen = new System.Windows.Forms.GroupBox();
+            this.btnRefreshIpList = new System.Windows.Forms.Button();
             this.btnQR = new System.Windows.Forms.Button();
             this.autoReconnect = new System.Windows.Forms.CheckBox();
             this.btnConnectAtem = new System.Windows.Forms.Button();
@@ -70,7 +71,7 @@ namespace ATEM_WebTally
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(719, 378);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(735, 411);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // consoleBox
@@ -83,11 +84,12 @@ namespace ATEM_WebTally
             this.consoleBox.Name = "consoleBox";
             this.consoleBox.ReadOnly = true;
             this.consoleBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.consoleBox.Size = new System.Drawing.Size(442, 348);
+            this.consoleBox.Size = new System.Drawing.Size(458, 381);
             this.consoleBox.TabIndex = 5;
             // 
             // Instellingen
             // 
+            this.Instellingen.Controls.Add(this.btnRefreshIpList);
             this.Instellingen.Controls.Add(this.btnQR);
             this.Instellingen.Controls.Add(this.autoReconnect);
             this.Instellingen.Controls.Add(this.btnConnectAtem);
@@ -106,15 +108,25 @@ namespace ATEM_WebTally
             this.Instellingen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Instellingen.Location = new System.Drawing.Point(3, 3);
             this.Instellingen.Name = "Instellingen";
-            this.Instellingen.Size = new System.Drawing.Size(241, 372);
+            this.Instellingen.Size = new System.Drawing.Size(241, 405);
             this.Instellingen.TabIndex = 8;
             this.Instellingen.TabStop = false;
             this.Instellingen.Text = "Instellingen";
             // 
+            // btnRefreshIpList
+            // 
+            this.btnRefreshIpList.Location = new System.Drawing.Point(157, 251);
+            this.btnRefreshIpList.Name = "btnRefreshIpList";
+            this.btnRefreshIpList.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshIpList.TabIndex = 19;
+            this.btnRefreshIpList.Text = "Ververs lijst";
+            this.btnRefreshIpList.UseVisualStyleBackColor = true;
+            this.btnRefreshIpList.Click += new System.EventHandler(this.btnRefreshIpList_Click);
+            // 
             // btnQR
             // 
             this.btnQR.Enabled = false;
-            this.btnQR.Location = new System.Drawing.Point(156, 307);
+            this.btnQR.Location = new System.Drawing.Point(157, 337);
             this.btnQR.Name = "btnQR";
             this.btnQR.Size = new System.Drawing.Size(75, 23);
             this.btnQR.TabIndex = 18;
@@ -134,7 +146,7 @@ namespace ATEM_WebTally
             // 
             // btnConnectAtem
             // 
-            this.btnConnectAtem.Location = new System.Drawing.Point(156, 51);
+            this.btnConnectAtem.Location = new System.Drawing.Point(157, 51);
             this.btnConnectAtem.Name = "btnConnectAtem";
             this.btnConnectAtem.Size = new System.Drawing.Size(75, 23);
             this.btnConnectAtem.TabIndex = 16;
@@ -157,13 +169,13 @@ namespace ATEM_WebTally
             this.inputList.FormattingEnabled = true;
             this.inputList.Location = new System.Drawing.Point(8, 105);
             this.inputList.Name = "inputList";
-            this.inputList.Size = new System.Drawing.Size(223, 94);
+            this.inputList.Size = new System.Drawing.Size(224, 94);
             this.inputList.TabIndex = 14;
             // 
             // lblSpeed
             // 
             this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Location = new System.Drawing.Point(67, 345);
+            this.lblSpeed.Location = new System.Drawing.Point(67, 375);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(0, 13);
             this.lblSpeed.TabIndex = 13;
@@ -171,7 +183,7 @@ namespace ATEM_WebTally
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 345);
+            this.label3.Location = new System.Drawing.Point(6, 375);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 12;
@@ -181,15 +193,15 @@ namespace ATEM_WebTally
             // 
             this.ipList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ipList.FormattingEnabled = true;
-            this.ipList.Location = new System.Drawing.Point(9, 226);
+            this.ipList.Location = new System.Drawing.Point(9, 224);
             this.ipList.Name = "ipList";
-            this.ipList.Size = new System.Drawing.Size(223, 21);
+            this.ipList.Size = new System.Drawing.Size(222, 21);
             this.ipList.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 210);
+            this.label2.Location = new System.Drawing.Point(6, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 10;
@@ -197,7 +209,7 @@ namespace ATEM_WebTally
             // 
             // serverIPbox
             // 
-            this.serverIPbox.Location = new System.Drawing.Point(9, 309);
+            this.serverIPbox.Location = new System.Drawing.Point(9, 339);
             this.serverIPbox.Name = "serverIPbox";
             this.serverIPbox.ReadOnly = true;
             this.serverIPbox.Size = new System.Drawing.Size(122, 20);
@@ -206,7 +218,7 @@ namespace ATEM_WebTally
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 293);
+            this.label1.Location = new System.Drawing.Point(6, 323);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 8;
@@ -224,7 +236,7 @@ namespace ATEM_WebTally
             // 
             this.btnStopServer.Enabled = false;
             this.btnStopServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopServer.Location = new System.Drawing.Point(133, 259);
+            this.btnStopServer.Location = new System.Drawing.Point(133, 289);
             this.btnStopServer.Name = "btnStopServer";
             this.btnStopServer.Size = new System.Drawing.Size(99, 23);
             this.btnStopServer.TabIndex = 4;
@@ -245,7 +257,7 @@ namespace ATEM_WebTally
             // 
             this.btnStartServer.Enabled = false;
             this.btnStartServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartServer.Location = new System.Drawing.Point(9, 259);
+            this.btnStartServer.Location = new System.Drawing.Point(9, 289);
             this.btnStartServer.Name = "btnStartServer";
             this.btnStartServer.Size = new System.Drawing.Size(99, 23);
             this.btnStartServer.TabIndex = 3;
@@ -260,7 +272,7 @@ namespace ATEM_WebTally
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(719, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(735, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -291,7 +303,7 @@ namespace ATEM_WebTally
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 402);
+            this.ClientSize = new System.Drawing.Size(735, 435);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -335,6 +347,7 @@ namespace ATEM_WebTally
         private ToolStripMenuItem btnHelp;
         private ToolStripMenuItem btnOver;
         public Button btnQR;
+        private Button btnRefreshIpList;
     }
 }
 

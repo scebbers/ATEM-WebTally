@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     function requestStatus() {
         $.ajax({
@@ -12,9 +11,9 @@ $(document).ready(function () {
                         $("div#textArea").text(data.status.toUpperCase());
                     }
                     else {
-                        /*$("body").removeClass();
+                        $("body").removeClass();
                         $("div#textArea").text('Gekozen input bestaat niet');
-                        $("div#labelArea").text('');*/
+                        $("div#labelArea").text('');
                     }
                 }
                 else {
@@ -34,6 +33,6 @@ $(document).ready(function () {
     });
     setTimeout(requestStatus, 100);
     }
-    
+
     requestStatus();
 });
