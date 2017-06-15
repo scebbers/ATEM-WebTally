@@ -125,8 +125,6 @@ namespace ATEM_WebTally
             // autoReconnect
             // 
             this.autoReconnect.AutoSize = true;
-            this.autoReconnect.Checked = true;
-            this.autoReconnect.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoReconnect.Location = new System.Drawing.Point(9, 55);
             this.autoReconnect.Name = "autoReconnect";
             this.autoReconnect.Size = new System.Drawing.Size(99, 17);

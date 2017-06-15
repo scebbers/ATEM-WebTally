@@ -54,6 +54,8 @@ namespace ATEM_WebTally
                 _BMDSwitcherConnectToFailure failReason = 0;
                 string address = parent.switcherIP;
 
+                parent.btnConnectAtem.Enabled = false;
+
                 Log("Verbinding maken met Atem Switcher op " + address);
 
                 try
@@ -67,6 +69,8 @@ namespace ATEM_WebTally
                 }
                 catch (Exception e)
                 {
+                    parent.btnConnectAtem.Enabled = true;
+
                     // An exception will be thrown if ConnectTo fails. For more information, see failReason.
                     switch (failReason)
                     {
@@ -118,6 +122,7 @@ namespace ATEM_WebTally
                 isListeningOnAtem = true;
 
                 parent.btnStartServer.Enabled = true;
+                parent.autoReconnect.Checked = true;
 
                 updateInputInfo(true, true);
 
@@ -227,6 +232,8 @@ namespace ATEM_WebTally
                 Log("Verbinding met de ATEM Switcher verloren.");
                 isListeningOnAtem = false;
 
+                parent.btnConnectAtem.Enabled = true;
+
                 parent.btnStartServer.Enabled = false;
 
                 // Remove all input monitors, remove callbacks
@@ -299,7 +306,7 @@ namespace ATEM_WebTally
             Log("Atem Switcher Discovery wordt opgestart");
 
             // This program makes use of the native BMDSwitcherAPI.dll, which is installed with the ATEM
-            // Switchers Software. Therefor using this product requires ATEM Switchers Software to be installed.
+            // Switchers Software. Therefore using this product requires ATEM Switchers Software to be installed.
 
             try
             {
@@ -626,6 +633,7 @@ namespace ATEM_WebTally
                     if (ctx.Request.QueryString["type"] == "status")
                     {
                         //AJAX request
+
                         int camNum = WebTallyForm.inputPorts.IndexOf(localPort);
                         byte[] content;
 
