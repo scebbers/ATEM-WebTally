@@ -2,7 +2,7 @@
 Turn your phone into a Tally-client, working together with ATEM Live Production Switchers.
 
 ## Requirements
-1. ATEM Switchers Software. Tested with version 7.1, should work with earlier versions
+1. ATEM Switchers Software. Tested with version 6.9, should work with earlier versions
 1. .NET Framework version 4.5
 
 The mentioned versions might not necessarily be used, but are recommended.
@@ -28,4 +28,4 @@ Please report any bugs and issues you encounter. When reporting, please include 
 ## Credits
 The following libraries are used in this application
 - QRCoder library. See https://github.com/codebude/QRCoder.
-- Blackmagic ATEM Switchers SDK 7.1. See https://www.blackmagicdesign.com/support.
+- Blackmagic ATEM Switchers SDK 6.9. See https://www.blackmagicdesign.com/support.
